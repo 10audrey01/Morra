@@ -56,15 +56,15 @@ public class Morra {
       }
     }
 
-    Level level = LevelFactory.getLevel(difficulty);
-    FingersAndSum jarvisFingersAndSum = level.action();
+    Level level = LevelFactory.getLevel(difficulty); // get the difficulty level
+    FingersAndSum jarvisFingersAndSum = level.action(); // action method returns fingers and sum
     int jarvisFingers = jarvisFingersAndSum.getFingers();
     int jarvisSum = jarvisFingersAndSum.getSum();
     MessageCli.PRINT_INFO_HAND.printMessage(
         "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
-    if ((sum == fingers + jarvisFingers) && (jarvisSum != fingers + jarvisFingers)) {
+    if ((sum == fingers + jarvisFingers) && (jarvisSum != fingers + jarvisFingers)) { // check if human sum is correct and jarvis sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
-    } else if (jarvisSum == fingers + jarvisFingers && (sum != fingers + jarvisFingers)) {
+    } else if (jarvisSum == fingers + jarvisFingers && (sum != fingers + jarvisFingers)) { // check if jarvis sum is correct and human sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
     } else {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
