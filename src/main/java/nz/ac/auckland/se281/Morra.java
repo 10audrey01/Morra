@@ -5,6 +5,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Morra {
   int numberOfRounds;
   String playerName;
+  Difficulty difficulty;
 
   public Morra() {}
 
@@ -12,6 +13,7 @@ public class Morra {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     numberOfRounds = 1;
     playerName = options[0];
+    this.difficulty = difficulty;
   }
 
   public void play() {
@@ -23,8 +25,8 @@ public class Morra {
     String input; // initialised variables used in while loop
     String[] inputArray;
     boolean isInteger;
-    int fingers;
-    int sum;
+    int fingers = 0;
+    int sum = 0;
     boolean inputValid = false;
 
     MessageCli.START_ROUND.printMessage(String.valueOf(numberOfRounds));
@@ -34,13 +36,9 @@ public class Morra {
       input = Utils.scanner.nextLine();
       inputArray = input.split(" ");
       isInteger = Utils.isInteger(inputArray[0]) && Utils.isInteger(inputArray[1]);
-      if (isInteger) { // convert to integers if valid, otherwise set to 0 (which will fail the next
-        // if statement)
+      if (isInteger) { // convert to integers if valid
         fingers = Integer.parseInt(inputArray[0]);
         sum = Integer.parseInt(inputArray[1]);
-      } else {
-        fingers = 0;
-        sum = 0;
       }
       if ((inputArray.length == 2)
           && (isInteger)
@@ -56,6 +54,19 @@ public class Morra {
       } else {
         MessageCli.INVALID_INPUT.printMessage();
       }
+    }
+
+    Level level = LevelFactory.getLevel(difficulty);
+    int jarvisFingers = level.action().getFingers();
+    int jarvisSum = level.action().getSum();
+    MessageCli.PRINT_INFO_HAND.printMessage(
+        "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
+    if ((sum == fingers + jarvisFingers) && (jarvisSum != fingers + jarvisFingers)) {
+      System.out.println("HUMAN_WINS");
+    } else if (jarvisSum == fingers + jarvisFingers && (sum != fingers + jarvisFingers)) {
+      System.out.println("AI_WINS");
+    } else {
+      System.out.println("DRAW");
     }
   }
 
