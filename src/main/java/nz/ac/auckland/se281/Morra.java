@@ -15,7 +15,12 @@ public class Morra {
   }
 
   public void play() {
-    String input;
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
+    String input; // initialised variables used in while loop
     String[] inputArray;
     boolean isInteger;
     int fingers;
@@ -29,7 +34,8 @@ public class Morra {
       input = Utils.scanner.nextLine();
       inputArray = input.split(" ");
       isInteger = Utils.isInteger(inputArray[0]) && Utils.isInteger(inputArray[1]);
-      if (isInteger) {
+      if (isInteger) { // convert to integers if valid, otherwise set to 0 (which will fail the next
+        // if statement)
         fingers = Integer.parseInt(inputArray[0]);
         sum = Integer.parseInt(inputArray[1]);
       } else {
@@ -38,7 +44,12 @@ public class Morra {
       }
       if ((inputArray.length == 2)
           && (isInteger)
-          && (fingers >= 1 && fingers <= 5 && sum >= 1 && sum <= 10)) {
+          && (fingers >= 1
+              && fingers <= 5
+              && sum >= 1
+              && sum
+                  <= 10)) { // check if input is valid for all requirements, otherwise loop through
+        // while loop again
         inputValid = true;
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, inputArray[0], inputArray[1]);
         numberOfRounds++;
