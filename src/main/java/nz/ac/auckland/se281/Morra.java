@@ -15,7 +15,7 @@ public class Morra {
   }
 
   public void play() {
-    if (playerName == null) {
+    if (playerName == null) { // check if game has been started
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
