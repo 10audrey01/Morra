@@ -14,10 +14,8 @@ public class AverageStrategy extends Strategy{
             sumOfPlayerFingersInputHistory += finger;
         }
 
-        double avg = (sumOfPlayerFingersInputHistory / playerFingersInputHistory.size());
-        int roundedAvg = (int) Math.round(avg);
-        System.out.println(avg);
-        return new FingersAndSum(fingers, (fingers + roundedAvg));
+        int avg = (int) Math.round((sumOfPlayerFingersInputHistory / playerFingersInputHistory.size()));
+        return new FingersAndSum(fingers, (fingers + avg));
     }
     
 }
