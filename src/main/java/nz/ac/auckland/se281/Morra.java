@@ -22,53 +22,28 @@ public class Morra {
       return;
     }
 
-    String input; // initialised variables used in while loop
-    String[] inputArray;
-    boolean isInteger;
-    int fingers = 0;
-    int sum = 0;
-    boolean inputValid = false;
-
     MessageCli.START_ROUND.printMessage(String.valueOf(numberOfRounds));
 
-    while (!inputValid) {
-      MessageCli.ASK_INPUT.printMessage();
-      input = Utils.scanner.nextLine();
-      inputArray = input.split(" ");
-      isInteger = Utils.isInteger(inputArray[0]) && Utils.isInteger(inputArray[1]);
-      if (isInteger) { // convert to integers if valid
-        fingers = Integer.parseInt(inputArray[0]);
-        sum = Integer.parseInt(inputArray[1]);
-      }
-      if ((inputArray.length == 2)
-          && (isInteger)
-          && (fingers >= 1
-              && fingers <= 5
-              && sum >= 1
-              && sum
-                  <= 10)) { // check if input is valid for all requirements, otherwise loop through
-        // while loop again
-        inputValid = true;
-        MessageCli.PRINT_INFO_HAND.printMessage(playerName, inputArray[0], inputArray[1]);
-        numberOfRounds++;
-      } else {
-        MessageCli.INVALID_INPUT.printMessage();
-      }
-    }
+    FingersAndSum playerInput = new HumanPlayer().findUserInput(); // get user input
+    int playerFingers = playerInput.getFingers();
+    int playerSum = playerInput.getSum();
+    MessageCli.PRINT_INFO_HAND.printMessage(playerName, String.valueOf(playerFingers), String.valueOf(playerSum));
 
-    Level level = LevelFactory.getLevel(difficulty); // get the difficulty level
-    FingersAndSum jarvisFingersAndSum = level.action(); // action method returns fingers and sum
-    int jarvisFingers = jarvisFingersAndSum.getFingers();
-    int jarvisSum = jarvisFingersAndSum.getSum();
+    FingersAndSum jarvisInput = new AI().generateAIFingersAndSum(LevelFactory.getLevel(difficulty)); // get jarvis input
+    int jarvisFingers = jarvisInput.getFingers();
+    int jarvisSum = jarvisInput.getSum();
     MessageCli.PRINT_INFO_HAND.printMessage(
         "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
-    if ((sum == fingers + jarvisFingers) && (jarvisSum != fingers + jarvisFingers)) { // check if human sum is correct and jarvis sum is incorrect
+        
+    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) { // check if human sum is correct and jarvis sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
-    } else if (jarvisSum == fingers + jarvisFingers && (sum != fingers + jarvisFingers)) { // check if jarvis sum is correct and human sum is incorrect
+    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) { // check if jarvis sum is correct and human sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
     } else {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     }
+
+    numberOfRounds++;
   }
 
   public void showStats() {}
