@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class HardLevel implements Level {
+public class HardLevel extends Level {
 
   @Override
   public FingersAndSum action() {

@@ -1,6 +1,10 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HumanPlayer {
+    List<Integer> playerFingersInputHistory = new ArrayList<Integer>();
     
     public FingersAndSum findUserInput() {
         String input; // initialised variables used in while loop
@@ -32,6 +36,17 @@ public class HumanPlayer {
                 MessageCli.INVALID_INPUT.printMessage();
             }
         }
+
         return new FingersAndSum(fingers, sum);
     }
+
+    public List<Integer> getPlayerFingersInputHistory() {
+        return playerFingersInputHistory;
+    }
+
+    public void addPlayerFingersInputHistory(int fingers) {
+        playerFingersInputHistory.add(fingers);
+    }
+
+
 }

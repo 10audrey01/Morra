@@ -1,5 +1,11 @@
 package nz.ac.auckland.se281;
 
-public interface Level {
-  FingersAndSum action();
+public abstract class Level {
+  FingersAndSum action() {
+    return null;
+  }
+
+  FingersAndSum action(int roundNumber, HumanPlayer humanPlayer) {
+    return null;
+  }
 }
