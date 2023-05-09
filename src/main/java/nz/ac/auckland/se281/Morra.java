@@ -9,18 +9,23 @@ import nz.ac.auckland.se281.Level.MediumLevel;
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
-  private int numberOfRounds;
-  private String playerName;
   private Difficulty difficulty;
+  private int pointsToWin;
+  private String playerName;
+  private int numberOfRounds;
   private HumanPlayer humanPlayer;
+  private int humanPlayerScore;
+  private int aiScore;
+ 
 
   public Morra() {}
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
-    numberOfRounds = 1;
-    playerName = options[0];
     this.difficulty = difficulty;
+    this.pointsToWin = pointsToWin;
+    playerName = options[0];
+    numberOfRounds = 1;
     humanPlayer = new HumanPlayer();
   }
 
@@ -45,14 +50,26 @@ public class Morra {
 
     if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) { // check if human sum is correct and jarvis sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+      humanPlayerScore++;
     } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) { // check if jarvis sum is correct and human sum is incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+      aiScore++;
     } else {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     }
 
-    humanPlayer.addPlayerFingersInputHistory(playerFingers);
-    numberOfRounds++;
+    if (humanPlayerScore == pointsToWin) { // check if human player has won
+      MessageCli.END_GAME.printMessage(playerName, String.valueOf(numberOfRounds));
+      playerName = null;
+      return;
+    } else if (aiScore == pointsToWin) { // check if jarvis has won
+      MessageCli.END_GAME.printMessage("Jarvis", String.valueOf(numberOfRounds));
+      playerName = null;
+      return;
+    } else {
+      humanPlayer.addPlayerFingersInputHistory(playerFingers);
+      numberOfRounds++;
+    }
   }
 
   public FingersAndSum getJarvisInput() {
@@ -70,5 +87,13 @@ public class Morra {
     return null;
   }
 
-  public void showStats() {}
+  public void showStats() {
+    if (playerName == null) { // check if game has been started
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    } else {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, String.valueOf(humanPlayerScore), String.valueOf(pointsToWin - humanPlayerScore));
+      MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", String.valueOf(aiScore), String.valueOf(pointsToWin - aiScore));
+    }
+  }
 }
