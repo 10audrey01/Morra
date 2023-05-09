@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281.Strategy;
+package nz.ac.auckland.se281.strategy;
 
 import java.util.List;
 
@@ -7,10 +7,9 @@ import nz.ac.auckland.se281.HumanPlayer;
 import nz.ac.auckland.se281.Utils;
 
 public class TopStrategy extends Strategy {
-    
+
     @Override
-    public
-    FingersAndSum selectFingersAndSum(HumanPlayer humanPlayer) {
+    public FingersAndSum selectFingersAndSum(HumanPlayer humanPlayer) {
         int fingers = Utils.getRandomNumber(1, 5);
         List<Integer> playerFingersInputHistory = humanPlayer.getPlayerFingersInputHistory();
         int top = mostFrequentFinger(playerFingersInputHistory);

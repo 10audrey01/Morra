@@ -19,7 +19,7 @@ public class HumanPlayer {
             MessageCli.ASK_INPUT.printMessage();
             input = Utils.scanner.nextLine().trim();
             inputArray = input.split(" ");
-        } while (inputArray.length != 2 || !fitsFingersAndSumInputRequirements(inputArray[0], inputArray[1]));
+        } while (inputArray.length != 2 || !isFitsFingersAndSumInputRequirements(inputArray[0], inputArray[1]));
 
         int fingers = Integer.parseInt(inputArray[0]);
         int sum = Integer.parseInt(inputArray[1]);
@@ -27,7 +27,7 @@ public class HumanPlayer {
         return new FingersAndSum(fingers, sum);
     }
 
-    public boolean fitsFingersAndSumInputRequirements(String fingersString, String sumString) {
+    public boolean isFitsFingersAndSumInputRequirements(String fingersString, String sumString) {
         if (!Utils.isInteger(fingersString) || !Utils.isInteger(sumString)) {
             return false;
         }

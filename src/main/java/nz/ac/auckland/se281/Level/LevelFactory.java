@@ -1,4 +1,5 @@
-package nz.ac.auckland.se281.Level;
+package nz.ac.auckland.se281.level;
+
 import nz.ac.auckland.se281.HumanPlayer;
 import nz.ac.auckland.se281.Main.Difficulty;
 

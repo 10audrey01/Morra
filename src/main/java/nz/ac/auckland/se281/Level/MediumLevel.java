@@ -1,10 +1,10 @@
-package nz.ac.auckland.se281.Level;
+package nz.ac.auckland.se281.level;
 
 import nz.ac.auckland.se281.FingersAndSum;
 import nz.ac.auckland.se281.HumanPlayer;
-import nz.ac.auckland.se281.Strategy.AverageStrategy;
-import nz.ac.auckland.se281.Strategy.RandomStrategy;
-import nz.ac.auckland.se281.Strategy.Strategy;
+import nz.ac.auckland.se281.strategy.AverageStrategy;
+import nz.ac.auckland.se281.strategy.RandomStrategy;
+import nz.ac.auckland.se281.strategy.Strategy;
 
 public class MediumLevel implements Level {
   private int numberOfRounds;
@@ -14,7 +14,7 @@ public class MediumLevel implements Level {
   public MediumLevel(int numberOfRounds, HumanPlayer humanPlayer) {
     this.numberOfRounds = numberOfRounds;
     this.humanPlayer = humanPlayer;
-  } 
+  }
 
   @Override
   public FingersAndSum action() {

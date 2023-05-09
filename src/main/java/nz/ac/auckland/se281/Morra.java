@@ -1,8 +1,8 @@
 package nz.ac.auckland.se281;
 
-import nz.ac.auckland.se281.Level.Level;
-import nz.ac.auckland.se281.Level.LevelFactory;
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.level.Level;
+import nz.ac.auckland.se281.level.LevelFactory;
 
 public class Morra {
   private Difficulty difficulty;
@@ -12,9 +12,9 @@ public class Morra {
   private HumanPlayer humanPlayer;
   private int humanPlayerScore;
   private int aiScore;
- 
 
-  public Morra() {}
+  public Morra() {
+  }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -44,10 +44,21 @@ public class Morra {
     MessageCli.PRINT_INFO_HAND.printMessage(
         "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
 
-    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) { // check if human sum is correct and jarvis sum is incorrect
+    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) { // check if
+                                                                                                        // human sum is
+                                                                                                        // correct and
+                                                                                                        // jarvis sum is
+                                                                                                        // incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
       humanPlayerScore++;
-    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) { // check if jarvis sum is correct and human sum is incorrect
+    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) { // check if
+                                                                                                             // jarvis
+                                                                                                             // sum is
+                                                                                                             // correct
+                                                                                                             // and
+                                                                                                             // human
+                                                                                                             // sum is
+                                                                                                             // incorrect
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
       aiScore++;
     } else {
@@ -77,8 +88,10 @@ public class Morra {
     if (playerName == null) { // check if game has been started
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
-      MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, String.valueOf(humanPlayerScore), String.valueOf(pointsToWin - humanPlayerScore));
-      MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", String.valueOf(aiScore), String.valueOf(pointsToWin - aiScore));
+      MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, String.valueOf(humanPlayerScore),
+          String.valueOf(pointsToWin - humanPlayerScore));
+      MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", String.valueOf(aiScore),
+          String.valueOf(pointsToWin - aiScore));
     }
   }
 }

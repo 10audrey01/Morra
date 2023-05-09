@@ -1,13 +1,14 @@
-package nz.ac.auckland.se281.Level;
+package nz.ac.auckland.se281.level;
 
 import nz.ac.auckland.se281.FingersAndSum;
-import nz.ac.auckland.se281.Strategy.RandomStrategy;
-import nz.ac.auckland.se281.Strategy.Strategy;
+import nz.ac.auckland.se281.strategy.RandomStrategy;
+import nz.ac.auckland.se281.strategy.Strategy;
 
 public class EasyLevel implements Level {
   private Strategy strategy;
 
-  public EasyLevel() {} 
+  public EasyLevel() {
+  }
 
   public FingersAndSum action() {
     setStrategy(new RandomStrategy());
