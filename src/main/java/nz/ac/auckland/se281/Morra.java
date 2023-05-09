@@ -76,7 +76,6 @@ public class Morra {
   public void showStats() {
     if (playerName == null) { // check if game has been started
       MessageCli.GAME_NOT_STARTED.printMessage();
-      return;
     } else {
       MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, String.valueOf(humanPlayerScore), String.valueOf(pointsToWin - humanPlayerScore));
       MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", String.valueOf(aiScore), String.valueOf(pointsToWin - aiScore));
