@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Level.EasyLevel;
+import nz.ac.auckland.se281.Level.HardLevel;
 import nz.ac.auckland.se281.Level.Level;
 import nz.ac.auckland.se281.Level.LevelFactory;
 import nz.ac.auckland.se281.Level.MediumLevel;
@@ -58,6 +59,8 @@ public class Morra {
     if (level instanceof EasyLevel) {
       return level.action();
     } else if (level instanceof MediumLevel) {
+      return level.action(numberOfRounds, humanPlayer);
+    } else if (level instanceof HardLevel) {
       return level.action(numberOfRounds, humanPlayer);
     }
 
