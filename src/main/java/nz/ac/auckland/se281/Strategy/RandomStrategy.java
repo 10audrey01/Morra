@@ -1,4 +1,7 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.Strategy;
+
+import nz.ac.auckland.se281.FingersAndSum;
+import nz.ac.auckland.se281.Utils;
 
 public class RandomStrategy extends Strategy {
 

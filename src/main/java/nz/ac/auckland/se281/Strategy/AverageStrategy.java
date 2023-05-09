@@ -1,6 +1,10 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.Strategy;
 
 import java.util.List;
+
+import nz.ac.auckland.se281.FingersAndSum;
+import nz.ac.auckland.se281.HumanPlayer;
+import nz.ac.auckland.se281.Utils;
 
 public class AverageStrategy extends Strategy{
 

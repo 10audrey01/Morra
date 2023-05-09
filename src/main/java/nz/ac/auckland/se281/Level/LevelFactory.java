@@ -1,5 +1,4 @@
-package nz.ac.auckland.se281;
-
+package nz.ac.auckland.se281.Level;
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class LevelFactory {

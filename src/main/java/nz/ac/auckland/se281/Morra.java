@@ -1,12 +1,16 @@
 package nz.ac.auckland.se281;
 
+import nz.ac.auckland.se281.Level.EasyLevel;
+import nz.ac.auckland.se281.Level.Level;
+import nz.ac.auckland.se281.Level.LevelFactory;
+import nz.ac.auckland.se281.Level.MediumLevel;
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
-  int numberOfRounds;
-  String playerName;
-  Difficulty difficulty;
-  HumanPlayer humanPlayer;
+  private int numberOfRounds;
+  private String playerName;
+  private Difficulty difficulty;
+  private HumanPlayer humanPlayer;
 
   public Morra() {}
 
