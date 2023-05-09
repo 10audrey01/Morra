@@ -1,14 +1,9 @@
 package nz.ac.auckland.se281.Level;
 
 import nz.ac.auckland.se281.FingersAndSum;
-import nz.ac.auckland.se281.HumanPlayer;
+import nz.ac.auckland.se281.Strategy.Strategy;
 
-public abstract class Level {
-  public FingersAndSum action() {
-    return null;
-  }
-
-  public FingersAndSum action(int roundNumber, HumanPlayer humanPlayer) {
-    return null;
-  }
-}
+public interface Level {
+  public FingersAndSum action();
+  public void setStrategy(Strategy strategy);
+ }

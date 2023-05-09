@@ -4,11 +4,11 @@ import nz.ac.auckland.se281.FingersAndSum;
 import nz.ac.auckland.se281.HumanPlayer;
 
 public abstract class Strategy {
-  FingersAndSum selectFingersAndSum() {
+  public FingersAndSum selectFingersAndSum() {
     return null;
   }
 
-  FingersAndSum selectFingersAndSum(HumanPlayer humanPlayer) {
+  public FingersAndSum selectFingersAndSum(HumanPlayer humanPlayer) {
     return null;
   }
 }

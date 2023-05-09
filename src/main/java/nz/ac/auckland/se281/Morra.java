@@ -73,15 +73,15 @@ public class Morra {
   }
 
   public FingersAndSum getJarvisInput() {
-    Level level = LevelFactory.getLevel(difficulty);
+    Level level = LevelFactory.getLevel(difficulty, numberOfRounds, humanPlayer);
     if (level instanceof EasyLevel) {
       return level.action();
     } else if (level instanceof MediumLevel) {
-      return level.action(numberOfRounds, humanPlayer);
+      return level.action();
     } else if (level instanceof HardLevel) {
-      return level.action(numberOfRounds, humanPlayer);
+      return level.action();
     } else if (level instanceof MasterLevel) {
-      return level.action(numberOfRounds, humanPlayer);
+      return level.action();
     }
 
     return null;
