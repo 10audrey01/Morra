@@ -7,7 +7,7 @@ public class LevelFactory {
   public static Level getLevel(Difficulty levelType, int numberOfRounds, HumanPlayer humanPlayer) {
     switch (levelType) {
       case EASY:
-        return new EasyLevel();
+        return new EasyLevel(); // does not need any parameters as it only uses RandomStrategy
       case MEDIUM:
         return new MediumLevel(numberOfRounds, humanPlayer);
       case HARD:

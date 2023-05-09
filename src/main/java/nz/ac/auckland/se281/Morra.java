@@ -59,7 +59,6 @@ public class Morra {
                                                                                                              // human
                                                                                                              // sum is
                                                                                                              // incorrect
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
       aiScore++;
     } else {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
