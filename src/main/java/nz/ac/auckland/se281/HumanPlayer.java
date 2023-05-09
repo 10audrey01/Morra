@@ -19,8 +19,7 @@ public class HumanPlayer {
             MessageCli.ASK_INPUT.printMessage();
             input = Utils.scanner.nextLine().trim();
             inputArray = input.split(" ");
-        } while (!Utils.isInteger(inputArray[0]) || !Utils.isInteger(inputArray[1]) || inputArray.length != 2
-                || !fitsFingersAndSumInputRequirements(inputArray[0], inputArray[1]));
+        } while (inputArray.length != 2 || !fitsFingersAndSumInputRequirements(inputArray[0], inputArray[1]));
 
         int fingers = Integer.parseInt(inputArray[0]);
         int sum = Integer.parseInt(inputArray[1]);
@@ -29,6 +28,9 @@ public class HumanPlayer {
     }
 
     public boolean fitsFingersAndSumInputRequirements(String fingersString, String sumString) {
+        if (!Utils.isInteger(fingersString) || !Utils.isInteger(sumString)) {
+            return false;
+        }
         int fingers = Integer.parseInt(fingersString);
         int sum = Integer.parseInt(sumString);
         return (fingers >= 1 && fingers <= 5 && sum >= 1 && sum <= 10);
@@ -41,5 +43,4 @@ public class HumanPlayer {
     public void addPlayerFingersInputHistory(int fingers) {
         playerFingersInputHistory.add(fingers);
     }
-
 }
