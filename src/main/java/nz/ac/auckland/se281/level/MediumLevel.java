@@ -17,7 +17,8 @@ public class MediumLevel implements Level {
   }
 
   @Override
-  public FingersAndSum action() { // set strategy to Random for first 3 rounds, then set strategy to Average
+  // set strategy to Random for first 3 rounds, then set strategy to Average
+  public FingersAndSum action() {
     if (numberOfRounds <= 3) {
       setStrategy(new RandomStrategy());
       return strategy.selectFingersAndSum();

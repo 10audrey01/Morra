@@ -11,14 +11,16 @@ public class AverageStrategy extends Strategy {
   public FingersAndSum selectFingersAndSum(HumanPlayer humanPlayer) {
     double sumOfPlayerFingersInputHistory = 0;
     int fingers = Utils.getRandomNumber(1, 5);
-    List<Integer> playerFingersInputHistory = humanPlayer.getPlayerFingersInputHistory(); // get player's input history
+    // get player's input history
+    List<Integer> playerFingersInputHistory = humanPlayer.getPlayerFingersInputHistory();
 
-    for (int finger : playerFingersInputHistory) { // find the sum of all the fingers the player has inputted
+    // find the sum of all the fingers the player has inputted
+    for (int finger : playerFingersInputHistory) {
       sumOfPlayerFingersInputHistory += finger;
     }
 
-    int avg = (int) Math.round((sumOfPlayerFingersInputHistory / playerFingersInputHistory.size())); // round avg up to
-                                                                                                     // nearest integer
+    // round avg up to nearest integer
+    int avg = (int) Math.round((sumOfPlayerFingersInputHistory / playerFingersInputHistory.size()));
     return new FingersAndSum(fingers, (fingers + avg));
   }
 }

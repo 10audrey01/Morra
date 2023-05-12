@@ -41,10 +41,12 @@ public class Morra {
     MessageCli.PRINT_INFO_HAND.printMessage(
         "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
 
-    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) {
+    if ((playerSum == playerFingers + jarvisFingers)
+        && (jarvisSum != playerFingers + jarvisFingers)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
       humanPlayerScore++;
-    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) {
+    } else if (jarvisSum == playerFingers + jarvisFingers
+        && (playerSum != playerFingers + jarvisFingers)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
       aiScore++;
     } else {
