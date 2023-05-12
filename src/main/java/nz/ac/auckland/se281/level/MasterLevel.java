@@ -18,8 +18,8 @@ public class MasterLevel implements Level {
   }
 
   @Override
-  public FingersAndSum action() {
-    if (numberOfRounds <= 3) {
+  public FingersAndSum action() { // set strategy to Random for first 3 rounds, then alternate between Average and
+    if (numberOfRounds <= 3) { // Top, starting with Average
       setStrategy(new RandomStrategy());
       return strategy.selectFingersAndSum();
     } else {

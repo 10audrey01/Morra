@@ -7,9 +7,6 @@ import nz.ac.auckland.se281.strategy.Strategy;
 public class EasyLevel implements Level {
   private Strategy strategy;
 
-  public EasyLevel() {
-  }
-
   public FingersAndSum action() {
     setStrategy(new RandomStrategy());
     return strategy.selectFingersAndSum();

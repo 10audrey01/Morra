@@ -17,7 +17,7 @@ public class HardLevel implements Level {
   }
 
   @Override
-  public FingersAndSum action() {
+  public FingersAndSum action() { // set strategy to Random for first 3 rounds, then set strategy to Top
     if (numberOfRounds <= 3) {
       setStrategy(new RandomStrategy());
       return strategy.selectFingersAndSum();

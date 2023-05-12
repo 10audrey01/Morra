@@ -13,9 +13,6 @@ public class Morra {
   private int humanPlayerScore;
   private int aiScore;
 
-  public Morra() {
-  }
-
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     this.difficulty = difficulty;
@@ -44,21 +41,11 @@ public class Morra {
     MessageCli.PRINT_INFO_HAND.printMessage(
         "Jarvis", String.valueOf(jarvisFingers), String.valueOf(jarvisSum));
 
-    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) { // check if
-                                                                                                        // human sum is
-                                                                                                        // correct and
-                                                                                                        // jarvis sum is
-                                                                                                        // incorrect
+    if ((playerSum == playerFingers + jarvisFingers) && (jarvisSum != playerFingers + jarvisFingers)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
       humanPlayerScore++;
-    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) { // check if
-                                                                                                             // jarvis
-                                                                                                             // sum is
-                                                                                                             // correct
-                                                                                                             // and
-                                                                                                             // human
-                                                                                                             // sum is
-                                                                                                             // incorrect
+    } else if (jarvisSum == playerFingers + jarvisFingers && (playerSum != playerFingers + jarvisFingers)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
       aiScore++;
     } else {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
