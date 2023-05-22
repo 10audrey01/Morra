@@ -19,6 +19,8 @@ public class Morra {
     this.pointsToWin = pointsToWin;
     playerName = options[0];
     numberOfRounds = 1;
+    humanPlayerScore = 0;
+    aiScore = 0;
     humanPlayer = new HumanPlayer();
   }
 
